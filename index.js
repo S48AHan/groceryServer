@@ -7,31 +7,41 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
+
+
 // Simulated user data (replace with a database in a real application)
 const users = [
   {
-    username: "Admin",
+    name: "Saber",
+    designation:"CFO",
+    contactNumber:"01924504701",
     email: "demo@example.com",
-    password: "demopwd",
-    roles: ["admin"],
+    password: "12345",
+    roles:"ADMIN",
   },
   {
-    username: "user1",
-    email: "user1@example.com",
-    password: "user1pwd",
-    roles: ["user"],
+      name: "Shoeb",
+    designation:"CEO",
+    contactNumber:"01924504721",
+    email: "demo1@example.com",
+    password: "12345",
+    roles:"ADMIN",
   },
   {
-    username: "user2",
-    email: "user2@example.com",
-    password: "user2pwd",
-    roles: ["user"],
+    name: "Saber",
+    designation:"Associate",
+    contactNumber:"01924504703",
+    email: "demo2@example.com",
+    password: "12345",
+    roles:"STAFF",
   },
   {
-    username: "user3",
-    email: "user3@example.com",
-    password: "user3pwd",
-    roles: ["user"],
+    name: "Saber",
+    designation:"Associate",
+    contactNumber:"01924504705",
+    email: "demo3@example.com",
+    password: "12345",
+    roles:"STAFF",
   },
 ];
 const secretKey = "yourSecretKey"; // Replace with a secure secret key for JWT
@@ -61,25 +71,30 @@ app.post("/register", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  const { email, pwd } = req.body;
+  const { email, password } = req.body;
   console.log(req);
-  console.log("Received login request:", { email, pwd });
+  console.log("Received login request:", { email, password });
 
   // Find user in the simulated user data
-  const user = users.find((u) => u.email === email && u.password === pwd);
+  const user = users.find((u) => u.email === email && u.password === password);
 
   if (user) {
     // Create a JWT token with user information
     const token = jwt.sign(
-      { email: user.email, roles: user.roles },
+      {name: user.name,
+        designation: user.designation,
+        contactNumber: user.contactNumber,
+        email: user.email,
+        roles: user.roles
+        
+         // Assuming this is a string
+      },
       secretKey,
-      {
-        expiresIn: "10s", // Token expiration time (adjust as needed)
-      }
+      { expiresIn: "1h" }
     );
 
     // Return the JWT token and roles
-    res.json({ accessToken: token, roles: user.roles });
+    res.json({ accessToken: token });
   } else {
     console.log("Login failed: Invalid email or password");
     res.status(401).send("Invalid email or password");
