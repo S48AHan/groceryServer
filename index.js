@@ -2,48 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
-
+const usersData = require("./usersData.json");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
 
 
-// Simulated user data (replace with a database in a real application)
-const users = [
-  {
-    name: "Saber",
-    designation:"CFO",
-    contactNumber:"01924504701",
-    email: "demo@example.com",
-    password: "12345",
-    roles:"ADMIN",
-  },
-  {
-      name: "Shoeb",
-    designation:"CEO",
-    contactNumber:"01924504721",
-    email: "demo1@example.com",
-    password: "12345",
-    roles:"ADMIN",
-  },
-  {
-    name: "Saber",
-    designation:"Associate",
-    contactNumber:"01924504703",
-    email: "demo2@example.com",
-    password: "12345",
-    roles:"STAFF",
-  },
-  {
-    name: "Saber",
-    designation:"Associate",
-    contactNumber:"01924504705",
-    email: "demo3@example.com",
-    password: "12345",
-    roles:"STAFF",
-  },
-];
+const users = usersData;
 const secretKey = "yourSecretKey"; // Replace with a secure secret key for JWT
 
 app.use(express.json());

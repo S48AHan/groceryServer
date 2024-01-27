@@ -1,0 +1,35 @@
+[
+    {
+      "name": "Saber",
+      "designation": "CFO",
+      "contactNumber": "01924504701",
+      "email": "demo@example.com",
+      "password": "12345",
+      "roles": "ADMIN"
+    },
+    {
+      "name": "Shoeb",
+      "designation": "CEO",
+      "contactNumber": "01924504721",
+      "email": "demo1@example.com",
+      "password": "12345",
+      "roles": "ADMIN"
+    },
+    {
+      "name": "Saber",
+      "designation": "Associate",
+      "contactNumber": "01924504703",
+      "email": "demo2@example.com",
+      "password": "12345",
+      "roles": "STAFF"
+    },
+    {
+      "name": "Saber",
+      "designation": "Associate",
+      "contactNumber": "01924504705",
+      "email": "demo3@example.com",
+      "password": "12345",
+      "roles": "STAFF"
+    }
+  ]
+  
